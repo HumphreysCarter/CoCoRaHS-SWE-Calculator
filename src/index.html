@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snow Water Equivalent Calculator</title>
+    <link rel="icon" type="image/png" href="favicon.ico"/>
+
+    <!-- SWE Calculator JS -->
+    <script src="javascript/swe-calculator.js"></script>
+
+    <!-- Apple-specific meta tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SWE Calculator">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Android tags -->
+    <link rel="manifest" href="manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('javascript/service-worker.js')
+                .then(() => console.log('Service Worker Registered'));
+        }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-200 font-sans min-h-screen flex items-center justify-center px-4">
+<div class="max-w-xl w-full bg-gray-800 p-6 rounded-lg shadow-lg py-8">
+    <h1 class="text-2xl font-bold text-center mb-6">Snow Water Equivalent Calculator</h1>
+    <form id="sweForm" class="space-y-6">
+        <div>
+            <label class="block text-lg font-medium mb-2">Select a Gauge:</label>
+            <div class="space-y-2">
+                <label class="flex items-center">
+                    <input type="radio" name="tare" value="510.0" checked class="form-radio text-blue-500">
+                    <span class="ml-2">TROPO 4" Gauge (510 g)</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="radio" name="tare" value="453.6" class="form-radio text-blue-500">
+                    <span class="ml-2">Stratus 4" Gauge (453 g)</span>
+                </label>
+            </div>
+        </div>
+        <div>
+            <label for="grossWeight" class="block text-lg font-medium mb-2">Enter Gross Weight (grams):</label>
+            <input type="text" id="grossWeight" name="grossWeight" step="0.1" required
+                   class="w-full p-2 bg-gray-700 text-gray-200 border border-gray-600 rounded-lg" inputmode="decimal">
+        </div>
+        <button type="button" id="calculateButton"
+                class="w-full bg-blue-600 text-gray-200 font-bold py-2 px-4 rounded-lg hover:bg-blue-700">
+            Calculate
+        </button>
+    </form>
+    <div id="results" class="hidden mt-6 bg-blue-800 text-white p-4 rounded-lg shadow-md text-center">
+        <p id="snowWeight" class="text-xl font-bold"></p>
+        <p id="liquidEquivalent" class="text-xl font-bold"></p>
+    </div>
+</div>
+</body>
+</html>
