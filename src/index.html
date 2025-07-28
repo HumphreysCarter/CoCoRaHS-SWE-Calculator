@@ -37,11 +37,11 @@
             <div class="space-y-2">
                 <label class="flex items-center">
                     <input type="radio" name="tare" value="510.0" checked class="form-radio text-blue-500">
-                    <span class="ml-2">TROPO 4" Gauge (510 g)</span>
+                    <span class="ml-2">TROPO 4" Gauge (510.0 g)</span>
                 </label>
                 <label class="flex items-center">
                     <input type="radio" name="tare" value="453.6" class="form-radio text-blue-500">
-                    <span class="ml-2">Stratus 4" Gauge (453 g)</span>
+                    <span class="ml-2">Stratus 4" Gauge (453.6 g)</span>
                 </label>
             </div>
         </div>
@@ -59,6 +59,44 @@
         <p id="snowWeight" class="text-xl font-bold"></p>
         <p id="liquidEquivalent" class="text-xl font-bold"></p>
     </div>
+
+    <!-- Settings Icon -->
+    <button id="openSettings" class="fixed top-4 right-4 text-gray-400 hover:text-white z-50" aria-label="Settings">
+        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+             width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                  d="M20 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6h-2m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4m16 6H10m0 0a2 2 0 1 0-4 0m4 0a2 2 0 1 1-4 0m0 0H4"/>
+        </svg>
+    </button>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-gray-800 p-6 rounded-lg w-full max-w-md shadow-lg relative">
+            <h2 class="text-xl font-bold mb-4">Adjust Gauge Weights</h2>
+
+            <form id="settingsForm" class="space-y-4">
+                <div>
+                    <label class="block mb-1 font-medium">TROPO 4" Gauge (grams)</label>
+                    <input type="number" id="tropoWeight" step="0.1"
+                           class="w-full p-2 bg-gray-700 rounded border border-gray-600">
+                </div>
+                <div>
+                    <label class="block mb-1 font-medium">Stratus 4" Gauge (grams)</label>
+                    <input type="number" id="stratusWeight" step="0.1"
+                           class="w-full p-2 bg-gray-700 rounded border border-gray-600">
+                </div>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                    Save Weights
+                </button>
+                <button type="button" id="closeSettings"
+                        class="w-full mt-2 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded">
+                    Close
+                </button>
+            </form>
+        </div>
+    </div>
+
+
 </div>
 </body>
 </html>
